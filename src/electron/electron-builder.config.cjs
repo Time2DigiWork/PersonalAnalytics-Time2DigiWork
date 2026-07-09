@@ -13,8 +13,8 @@ module.exports = {
   ],
   publish: {
     provider: 'github',
-    owner: 'HASEL-UZH',
-    repo: 'PersonalAnalytics'
+    owner: 'Time2DigiWork',
+    repo: 'PersonalAnalytics-Time2DigiWork'
   },
   afterSign: "scripts/notarize.cjs",
   mac: {
