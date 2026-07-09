@@ -2,18 +2,17 @@ import { StudyConfiguration } from './StudyConfiguration';
 import { DataExportFormat } from './DataExportFormat.enum';
 
 const studyConfig: StudyConfiguration = {
-  name: 'PersonalAnalytics',
+  name: 'Time2DigiWork',
   shortDescription:
-    'PersonalAnalytics is a self-monitoring software developed by the Human Aspects of Software Engineering Lab of the University of Zurich to non-intrusively collect computer interaction data and store it locally on your computer. Every now and then, a self-reflection question asks you about time well spent and perceived productivity. In the future, it will add a retrospection that will visualize and correlate the automatically collected and manually reported data to help you learn more about how you spend your time and your productivity. This software is open source, can be adapted and re-used for your own scientific studies.',
-  infoUrl: 'https://github.com/HASEL-UZH/PersonalAnalytics',
-  privacyPolicyUrl:
-    'https://github.com/HASEL-UZH/PersonalAnalytics/blob/dev/documentation/PRIVACY.md',
-  uploadUrl: 'https://hasel.dev/upload',
-  contactName: 'Dr. André Meyer',
-  contactEmail: 'study@hasel.dev',
+    'Diese verhaltensbasierte Studie untersucht, wie digitale Tools und KI-Systeme im akademischen Arbeitsalltag genutzt werden. Ziel ist es, ein realistisches Bild davon zu erhalten, in welchem Ausmass digitale Tools und KI eingesetzt werden und welchen Einfluss digitale Tools und KI-Systeme auf Effizienz und Arbeitsbelastung haben.',
+  infoUrl: 'https://www.zhaw.ch/de/forschung/projekt/80606',
+  privacyPolicyUrl: 'https://github.com/HASEL-UZH/PersonalAnalytics/blob/dev/documentation/PRIVACY.md',
+  uploadUrl: '',
+  contactName: 'Dr. Nicoline Scheidegger',
+  contactEmail: 'snic@zhaw.ch',
   subjectIdLength: 6,
   dataExportEnabled: true,
-  dataExportFormat: DataExportFormat.ExportAsZippedSqlite,
+  dataExportFormat: DataExportFormat.ExportToDDL,
   dataExportEncrypted: false,
   displayDaysParticipated: true,
   showActiveTimesInOnboarding: true,
@@ -29,47 +28,40 @@ const studyConfig: StudyConfiguration = {
     userInputTracker: {
       enabled: true,
       intervalInMs: 60000,
-      collectKeyDetails: true
+      collectKeyDetails: false
     },
     experienceSamplingTracker: {
       enabled: true,
       questions: [
         {
-          question:
-            'Compared to your normal level of productivity, how productive do you consider the previous session?',
+          question: 'Seit der letzten Abfrage konnte ich konzentriert an einer Sache arbeiten.',
           answerType: 'LikertScale',
           scale: 7,
-          responseOptions: ['not at all productive', 'moderately productive', 'very productive']
+          responseOptions: ['stimme überhaupt nicht zu', 'teils-teils', 'stimme voll und ganz zu']
         },
         {
-          question: 'How well did you spend your time in the previous session?',
+          question: 'Seit der letzten Abfrage wurde meine Aufmerksamkeit vor allem durch eingehende Anfragen, Nachrichten oder Unterbrechungen gesteuert.',
           answerType: 'LikertScale',
-          scale: 5,
-          responseOptions: ['not well', 'moderately well', 'very well']
+          scale: 7,
+          responseOptions: ['stimme überhaupt nicht zu', 'teils-teils', 'stimme voll und ganz zu']
         },
-        // {
-        //   question: 'What is one aspect that affected your ability to focus the most in the last session?',
-        //   answerType: 'TextResponse',
-        //   responseOptions: 'singleLine',
-        //   maxLength: 100
-        // },
-        // {
-        //   question: 'What best describes your current task type?',
-        //   answerType: 'SingleChoice',
-        //   responseOptions: ['Coding', 'Reading/Writing Documents', 'Meeting', 'Planning', 'Email & Chat Communication', 'Learning', 'Other']
-        // },
-        // {
-        //   question: 'Which distractions did you experience in the last session?',
-        //   answerType: 'MultiChoice',
-        //   responseOptions: ['Notifications', 'Meetings', 'Context switching', 'Personal interruptions', 'None']
-        // }
+        {
+          question: 'Wofür hast Du KI-Tools seit der letzten Abfrage hauptsächlich verwendet?',
+          answerType: 'SingleChoice',
+          responseOptions: ['Keine KI Nutzung', 'Informationen verstehen oder erklären lassen', 'Ideen, Struktur oder Argumentation entwickeln', 'Texte schreiben, überarbeiten oder zusammenfassen', 'Sprache verbessern, übersetzen oder umformulieren', 'Daten, Code oder Auswertungen unterstützen', 'Kommunikation vorbereiten, z. B. E-Mail, Nachricht, Feedback', 'Nicht arbeitsbezogene Nutzung', 'Anderes']
+        },
+        {
+          question: 'Für welchen Leistungsbereich hast Du KI seit der letzten Abfrage hauptsächlich eingesetzt?',
+          answerType: 'SingleChoice',
+          responseOptions: ['Keine KI Nutzung', 'Lehre', 'Forschung', 'Weiterbildung', 'Dienstleistung', 'Administration / Organisation', 'Führung', 'nicht arbeitsbezogene Nutzung', 'anderes']
+        },
       ],
-      showAllQuestionsTogether: false,
-      intervalInMs: 1000 * 60 * 60 * 1, // default interval (must be listed in userDefinedInterval_h if set)
-      samplingRandomization: 0.2, // 20% randomization, so the interval will be between 48 and 72 minutes
-      allowUserToDisable: true,
+      intervalInMs: 1000 * 60 * 60 * 2, // default interval (must be listed in userDefinedInterval_h if set)
+      samplingRandomization: 0.1, // 10% randomization, so the interval will be between 108 and 132 minutes
+      showAllQuestionsTogether: true,
+      allowUserToDisable: false,
       allowUserToChangeInterval: true,
-      userDefinedInterval_h: [0.5, 1, 2, 3, 4]
+      userDefinedInterval_h: [1, 2, 3]
     },
     dailySurveyTracker: {
       enabled: false,
@@ -98,27 +90,42 @@ const studyConfig: StudyConfiguration = {
           delayInMinutes: -30,
           requireAllAnswers: false,
           questions: [
-            // {
-            //   question: 'Overall, how satisfied are you with your workday?',
-            //   answerType: 'LikertScale',
-            //   scale: 5,
-            //   responseOptions: ['very satisfied', 'satisfied', 'neutral', 'dissatisfied', 'very dissatisfied']
-            // },
-            // {
-            //   question: 'How much did you interact with your co-workers today?',
-            //   answerType: 'SingleChoice',
-            //   responseOptions: ['not at all', 'rarely', 'sometimes', 'often', 'all the time']
-            // },
-            // {
-            //   question: 'Where did you mostly work from?',
-            //   answerType: 'SingleChoice',
-            //   responseOptions: ['mostly at the office', 'mostly remotely', 'mostly at home']
-            // },
-            // {
-            //   question: 'Which distractions did you experience today?',
-            //   answerType: 'MultiChoice',
-            //   responseOptions: ['Notifications', 'Unplanned meetings', 'Co-worker interruptions', 'Context switching', 'Noisy environment', 'Personal matters', 'None']
-            // }
+            {
+              question: 'Ich habe heute qualitativ gute Arbeit geleistet.',
+              answerType: 'LikertScale',
+              scale: 7,
+              responseOptions: ['stimme überhaupt nicht zu', 'teils-teils', 'stimme voll und ganz zu']
+            },
+            {
+              question: 'Ich habe heutMein Arbeitstag war heute mental erschöpfend.',
+              answerType: 'LikertScale',
+              scale: 7,
+              responseOptions: ['stimme überhaupt nicht zu', 'teils-teils', 'stimme voll und ganz zu']
+            },
+            {
+              question: 'Heute musste ich häufiger reagieren als planen.',
+              answerType: 'LikertScale',
+              scale: 7,
+              responseOptions: ['stimme überhaupt nicht zu', 'teils-teils', 'stimme voll und ganz zu']
+            },
+            {
+              question: 'Heute hatte ich ausreichend ungestörte Zeit für konzentriertes Arbeiten.',
+              answerType: 'LikertScale',
+              scale: 7,
+              responseOptions: ['stimme überhaupt nicht zu', 'teils-teils', 'stimme voll und ganz zu']
+            },
+            {
+              question: 'Die Nutzung von KI hat heute dazu beigetragen, dass ich häufiger zwischen Aufgaben gewechselt habe.',
+              answerType: 'LikertScale',
+              scale: 7,
+              responseOptions: ['stimme überhaupt nicht zu', 'teils-teils', 'stimme voll und ganz zu']
+            },
+            {
+              question: 'Das Prüfen und Überarbeiten von KI-Ergebnissen war heute geistig anstrengend.',
+              answerType: 'LikertScale',
+              scale: 7,
+              responseOptions: ['stimme überhaupt nicht zu', 'teils-teils', 'stimme voll und ganz zu']
+            },
           ]
         }
       ]
