@@ -9,7 +9,7 @@ const studyConfig: StudyConfiguration = {
   privacyPolicyUrl: 'https://github.com/HASEL-UZH/PersonalAnalytics/blob/dev/documentation/PRIVACY.md',
   uploadUrl: '',
   contactName: 'Dr. Nicoline Scheidegger',
-  contactEmail: 'snic@zhaw.ch',
+  contactEmail: 'Time2DigiWork@zhaw.ch',
   subjectIdLength: 6,
   dataExportEnabled: true,
   dataExportFormat: DataExportFormat.ExportToDDL,
@@ -20,17 +20,20 @@ const studyConfig: StudyConfiguration = {
   trackers: {
     enabledWorkHours: true,
     windowActivityTracker: {
+      name: 'Window Activity Monitor',
       enabled: true,
       intervalInMs: 1000,
       trackUrls: false,
       trackWindowTitles: true
     },
     userInputTracker: {
+      name: 'User Input Monitor',
       enabled: true,
       intervalInMs: 60000,
       collectKeyDetails: false
     },
     experienceSamplingTracker: {
+      name: 'Experience Sampling',
       enabled: true,
       questions: [
         {
@@ -54,7 +57,7 @@ const studyConfig: StudyConfiguration = {
           question: 'Für welchen Leistungsbereich hast Du KI seit der letzten Abfrage hauptsächlich eingesetzt?',
           answerType: 'SingleChoice',
           responseOptions: ['Keine KI Nutzung', 'Lehre', 'Forschung', 'Weiterbildung', 'Dienstleistung', 'Administration / Organisation', 'Führung', 'nicht arbeitsbezogene Nutzung', 'anderes']
-        },
+        }
       ],
       intervalInMs: 1000 * 60 * 60 * 2, // default interval (must be listed in userDefinedInterval_h if set)
       samplingRandomization: 0.1, // 10% randomization, so the interval will be between 108 and 132 minutes
@@ -64,27 +67,8 @@ const studyConfig: StudyConfiguration = {
       userDefinedInterval_h: [1, 2, 3]
     },
     dailySurveyTracker: {
-      enabled: false,
+      enabled: true,
       surveys: [
-        {
-          samplingType: 'morning',
-          delayInMinutes: 5,
-          requireAllAnswers: false,
-          questions: [
-            // {
-            //   question: 'How motivated are you to start today?',
-            //   answerType: 'LikertScale',
-            //   scale: 7,
-            //   responseOptions: ['not at all motivated', 'moderately motivated', 'very motivated']
-            // },
-            // {
-            //   question: 'What is your main goal for today?',
-            //   answerType: 'TextResponse',
-            //   responseOptions: 'singleLine',
-            //   maxLength: 150
-            // }
-          ]
-        },
         {
           samplingType: 'evening',
           delayInMinutes: -30,
@@ -97,7 +81,7 @@ const studyConfig: StudyConfiguration = {
               responseOptions: ['stimme überhaupt nicht zu', 'teils-teils', 'stimme voll und ganz zu']
             },
             {
-              question: 'Ich habe heutMein Arbeitstag war heute mental erschöpfend.',
+              question: 'Mein Arbeitstag war heute mental erschöpfend.',
               answerType: 'LikertScale',
               scale: 7,
               responseOptions: ['stimme überhaupt nicht zu', 'teils-teils', 'stimme voll und ganz zu']
@@ -115,16 +99,39 @@ const studyConfig: StudyConfiguration = {
               responseOptions: ['stimme überhaupt nicht zu', 'teils-teils', 'stimme voll und ganz zu']
             },
             {
-              question: 'Die Nutzung von KI hat heute dazu beigetragen, dass ich häufiger zwischen Aufgaben gewechselt habe.',
+              question: 'Hast du heute KI-Tools für deine Arbeit verwendet?',
+              answerType: 'SingleChoice',
+              responseOptions: ['Ja', 'Nein']
+            },
+            {
+              question: '(falls du heute KI genutzt hast) KI hat mir heute geholfen, schneller voranzukommen.',
               answerType: 'LikertScale',
               scale: 7,
               responseOptions: ['stimme überhaupt nicht zu', 'teils-teils', 'stimme voll und ganz zu']
             },
             {
-              question: 'Das Prüfen und Überarbeiten von KI-Ergebnissen war heute geistig anstrengend.',
+              question: '(falls du heute KI genutzt hast) KI hat heute die Qualität meiner Arbeit verbessert.',
               answerType: 'LikertScale',
               scale: 7,
               responseOptions: ['stimme überhaupt nicht zu', 'teils-teils', 'stimme voll und ganz zu']
+            },
+            {
+              question: '(falls du heute KI genutzt hast) Die Nutzung von KI hat heute dazu beigetragen, dass ich häufiger zwischen Aufgaben gewechselt habe.',
+              answerType: 'LikertScale',
+              scale: 7,
+              responseOptions: ['stimme überhaupt nicht zu', 'teils-teils', 'stimme voll und ganz zu']
+            },
+            {
+              question: '(falls du heute KI genutzt hast) Das Prüfen und Überarbeiten von KI-Ergebnissen war heute geistig anstrengend.',
+              answerType: 'LikertScale',
+              scale: 7,
+              responseOptions: ['stimme überhaupt nicht zu', 'teils-teils', 'stimme voll und ganz zu']
+            },
+            {
+              question: '(falls du heute KI genutzt hast) Wie hat KI deine Arbeit heute (positiv/negativ) beeinflusst, und warum?',
+              answerType: 'TextResponse',
+              responseOptions: 'multiLine',
+              maxLength: 800
             },
           ]
         }

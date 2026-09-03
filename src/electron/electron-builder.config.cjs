@@ -2,7 +2,11 @@ module.exports = {
   productName: 'PersonalAnalytics',
   appId: 'ch.ifi.hasel.personal-analytics',
   asar: true,
-  asarUnpack: ['node_modules/better_sqlite3/**', 'node_modules/sqlite3/**'],
+  asarUnpack: [
+    'node_modules/better_sqlite3/**',
+    'node_modules/sqlite3/**',
+    'node_modules/extract-file-icon/**'
+  ],
   directories: {
     output: 'release/${version}'
   },
@@ -13,8 +17,8 @@ module.exports = {
   ],
   publish: {
     provider: 'github',
-    owner: 'HASEL-UZH',
-    repo: 'PersonalAnalytics'
+    owner: 'Time2DigiWork',
+    repo: 'PersonalAnalytics-Time2DigiWork'
   },
   afterSign: "scripts/notarize.cjs",
   mac: {
@@ -58,5 +62,6 @@ module.exports = {
     deleteAppDataOnUninstall: true,
     differentialPackage: false,
     artifactName: '${productName}-${version}-Windows.${ext}',
+    createDesktopShortcut: false,
   }
 };
