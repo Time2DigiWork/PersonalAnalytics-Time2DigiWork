@@ -480,8 +480,11 @@ export class WindowService {
     if (!this.tray) return
     LOG.debug('Updating tray')
     const menuTemplate: MenuItemConstructorOptions[] = await this.getTrayMenuTemplate()
-    menuTemplate[1].label = updaterLabel
-    menuTemplate[1].enabled = updaterMenuEnabled
+    const updaterMenuItem = menuTemplate.find((item) => item.id === 'updater')
+    if (updaterMenuItem) {
+      updaterMenuItem.label = updaterLabel
+      updaterMenuItem.enabled = updaterMenuEnabled
+    }
 
     this.tray.setContextMenu(Menu.buildFromTemplate(menuTemplate))
     this.tray.on("click", () => { this.tray?.popUpContextMenu() })
@@ -516,6 +519,7 @@ export class WindowService {
       { type: 'separator', visible: is.dev },
       { label: `Version ${app.getVersion()}`, enabled: false },
       {
+        id: 'updater',
         label: 'Check for updates',
         enabled: false,
         click: () => this.appUpdaterService.checkForUpdates({ silent: false })
