@@ -2,7 +2,7 @@
 Anyone may install PersonalAnalytics on their Windows or macOS device to non-intrusively collect computer interaction data, and analyze their activity, time spent and work habits for themselves. In the future, once we'll re-introduce the Retrospection (i.e. visualizations of the collected and self-reported data), it will be much easier to gain insights again.
 
 ## How to install PersonalAnalytics on Windows
-1. Visit https://hasel.dev/pa (or use the link provided to you by the researchers)
+1. Visit https://www.hasel.dev/t2dw-windows 
 2. Select the Windows version (exe-file)
 3. Wait for the download to complete
 4. Allow the install-file (exe) to be downloaded in case your browser blocks it
@@ -11,21 +11,25 @@ Anyone may install PersonalAnalytics on their Windows or macOS device to non-int
 7. Follow the Onboarding-wizard that explains the study, collected data and how to use PersonalAnalytics
 8. Access PersonalAnalytics anytime through the context-menu in the taskbar icon
 
+Contact Time2DigiWork@zhaw.ch in case of questions.
+
 The following video shows the steps in action:
 
 [![How to install PersonalAnalytics on Windows](https://markdown-videos-api.jorgenkh.no/youtube/70bempaQYFk)](https://youtu.be/70bempaQYFk)
 
 
 ## How to install PersonalAnalytics on macOS
-1. Visit https://hasel.dev/pa (or use the link provided to you by the researchers)
+1. Visit https://www.hasel.dev/t2dw-macos-apple (on newer Macs with an Apple chip, e.g. M1, M2...) or https://www.hasel.dev/t2dw-macos-intel (on older Macs with an Intel chip)
 2. Select the macOS version (dmg-file)
 3. Wait for the download to complete
-4. Open the downloaded instller and drag the PersonalAnalytics-app to your Applications folder
+4. Open the downloaded installer and drag the PersonalAnalytics-app to your Applications folder
 5. (optional) Click "Open" in case a warning is shown that the app was downloaded from the internet
 6. After the installation completes, follow the Onboarding-wizard, which explains the study, collected data and how to use PersonalAnalytics
 7. On the second page, grant PersonalAnalytics the permissions it requires to function correctly
 8. Note that you might need to manually quit and restart PersonalAnalytics after giving permission
 9. Access PersonalAnalytics anytime through the context-menu in the menubar icon
+
+Contact Time2DigiWork@zhaw.ch in case of questions.
 
 The following video shows the steps in action:
 
@@ -57,4 +61,4 @@ The researchers might ask you to share the collected data with them for data ana
 
 
 ### Questions
-In case of questions, contact the researchers who asked you to install PersonalAnalytics. You find their email in the study description or by clicking "Get Help" in the context menu.
+In case of questions, contact us via Time2DigiWork@zhaw.ch.
